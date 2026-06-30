@@ -1,0 +1,53 @@
+/* ── Header ─────────────────────────────────────────────── */
+.app-header {
+  background: #2c3e50;
+  color: #fff;
+  padding: 0 2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+
+  .header-content {
+    max-width: 960px;
+    margin: 0 auto;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .brand {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  .header-nav {
+    display: flex;
+    gap: 1.5rem;
+
+    a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+
+      &:hover,
+      &.active {
+        color: #fff;
+      }
+    }
+  }
+}
+
+/* ── Main ───────────────────────────────────────────────── */
+.app-main {
+  min-height: calc(100vh - 120px);
+}
+
+/* ── Footer ─────────────────────────────────────────────── */
+.app-footer {
+  text-align: center;
+  padding: 1rem;
+  background: #ecf0f1;
+  color: #7f8c8d;
+  font-size: 0.85rem;
+}
