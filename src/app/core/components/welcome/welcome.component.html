@@ -1,0 +1,17 @@
+<div class="welcome-container">
+  <div class="hero">
+    <h1 class="hero-title">Bienvenido al Portal de Elementos</h1>
+    <p class="hero-subtitle">
+      Consulta y gestiona la lista de elementos disponibles en el sistema.
+    </p>
+    <a routerLink="/elementos" class="btn btn-primary">Ver Elementos</a>
+  </div>
+
+  <nav class="menu">
+    <h2 class="menu-title">Navegación</h2>
+    <ul class="menu-list">
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a></li>
+      <li><a routerLink="/elementos" routerLinkActive="active">Elementos</a></li>
+    </ul>
+  </nav>
+</div>

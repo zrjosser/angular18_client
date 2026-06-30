@@ -1,0 +1,80 @@
+<div class="elementos-container">
+  <h2 class="page-title">Listado de Elementos</h2>
+
+  <!-- Loading state -->
+  <div *ngIf="isLoading" class="state-message loading">
+    <span class="spinner"></span> Cargando elementos...
+  </div>
+
+  <!-- Error state -->
+  <div *ngIf="!isLoading && errorMessage" class="state-message error">
+    {{ errorMessage }}
+    <button class="btn btn-retry" (click)="loadElementos()">Reintentar</button>
+  </div>
+
+  <!-- Table -->
+  <div *ngIf="!isLoading && !errorMessage" class="table-wrapper">
+    <table class="elementos-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let elemento of pagedElementos">
+          <td>{{ elemento.id }}</td>
+          <td>{{ elemento.nombre }}</td>
+          <td>{{ elemento.descripcion }}</td>
+          <td>
+            <span class="badge" [ngClass]="elemento.activo ? 'badge-active' : 'badge-inactive'">
+              {{ elemento.activo ? 'Activo' : 'Inactivo' }}
+            </span>
+          </td>
+        </tr>
+        <tr *ngIf="pagedElementos.length === 0">
+          <td colspan="4" class="no-data">No hay elementos disponibles.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Pagination -->
+    <div class="pagination" *ngIf="totalPages > 1">
+      <button
+        class="page-btn"
+        [disabled]="currentPage === 1"
+        (click)="setPage(currentPage - 1)"
+        aria-label="Página anterior"
+      >
+        &laquo;
+      </button>
+
+      <button
+        *ngFor="let page of pages"
+        class="page-btn"
+        [class.active]="page === currentPage"
+        (click)="setPage(page)"
+        [attr.aria-label]="'Página ' + page"
+        [attr.aria-current]="page === currentPage ? 'page' : null"
+      >
+        {{ page }}
+      </button>
+
+      <button
+        class="page-btn"
+        [disabled]="currentPage === totalPages"
+        (click)="setPage(currentPage + 1)"
+        aria-label="Página siguiente"
+      >
+        &raquo;
+      </button>
+    </div>
+
+    <p class="pagination-info">
+      Mostrando {{ pagedElementos.length }} de {{ totalItems }} elementos
+      (Página {{ currentPage }} de {{ totalPages }})
+    </p>
+  </div>
+</div>
